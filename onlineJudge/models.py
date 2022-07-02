@@ -23,10 +23,10 @@ class Test_Case(models.Model):
 class Solutions(models.Model):
     PID = models.ForeignKey(Problems,on_delete=models.CASCADE)
     language_choices=(
-        ('c++','cpp')
-        ('c','c')
-        ('java','java')
-        ('python','python')
+        ('c++','cpp'),
+        ('c','c'),
+        ('java','java'),
+        ('python','python'),
     )
     Language = models.CharField(max_length=20,choices=language_choices)
     Code_file = models.FileField(upload_to='Code_file')
