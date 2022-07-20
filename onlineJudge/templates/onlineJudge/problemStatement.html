@@ -5,14 +5,13 @@
 <body>
     <h1 align="center">{{ problem.Problem_Name }}</h1>
     <p> {{ problem.Problem_Description }}</p>
-    <form action="{% url 'onlineJudge:submission' problem.id %}" enctype="multipart/form-data" method="post">
+    <form action="{% url 'onlineJudge:submit' problem.id %}" enctype="multipart/form-data" method="post">
         {% csrf_token %}
         <fieldset>
             <label for="language">language:</label>
             <select name="language" id="language" required="required">
                 <option value="">choose language</option>
                 <option value="c++">C++</option>
-                <option value="java">java</option>
             </select><br><br>
             <div align="center">
                 <label for="solutionText">Write your code here:</label><br>

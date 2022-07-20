@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+    <style>
+        .bg-light{background-color: rgb(193, 238, 238)!important;}
+        .shadow-4-strong{box-shadow:0 2px 15px -3px rgba(0,0,0,.16),0 10px 20px -2px rgba(0,0,0,.1)!important}
+    </style>
+</head>
+<body>
+    <div class="d-flex justify-content-center">
+        {% if status == 'wrong_ans' %}
+        <div class="card m-5  bg-light p-3 shadow-4-strong" style="width: 26rem;">
+            {% load static %}
+            <img src="{% static 'img/failure.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body text-center border-top border-warning">
+                <p class="card-text text-warning font-weight-bold">Every master was once a beginner.<br>It worth one more try...</p><br>
+                <a href="{% url 'onlineJudge:problems' %}" class="card-link btn btn-info m-2">Problems</a>
+                <a href="{% url 'onlineJudge:submissions' %}" class="card-link btn btn-info m-2">Submissions</a>
+            </div>
+        </div>
+        {% elif status == 'correct_ans' %}
+        <div class="card m-5  bg-light p-3 shadow-4-strong" style="width: 26rem;">
+            {% load static %}
+            <img src="{% static 'img/sucess.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body text-center border-top border-success">
+                <p class="card-text text-success font-weight-bold">Great Work! Keep it up.<br>Great form let's face few more challenges</p><br>
+                <a href="{% url 'onlineJudge:problems' %}" class="card-link btn btn-info m-2">Problems</a>
+                <a href="{% url 'onlineJudge:submissions' %}" class="card-link btn btn-info m-2">Submissions</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

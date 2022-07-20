@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+  <style>
+    html,
+    body,
+    .tablestr {
+      height: 100%;
+    }
+
+    .gradient {
+      background: #6a11cb;
+      background: -webkit-linear-gradient(to top, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1), rgb(106, 185, 231));
+      background: linear-gradient(to top, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1), rgb(106, 185, 231))
+    }
+
+    table td,
+    table th {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    thead th {
+      color: rgb(245, 239, 239);
+    }
+
+    tbody td {
+      font-weight: 500;
+      color: rgba(28, 27, 27, 0.65);
+
+    }
+    
+    #shadow {
+      box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .25), 0 3px 10px 3px rgba(0, 0, 0, 0.28) !important;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="tablestr">
+    <div class="gradient h-100">
+      <div class="p-5 text-center">
+        <h1 class="mb-lg-5 text-dark rounded" style="background-color: rgb(135, 245, 245);">PROBLEMS</h1>
+      </div>
+      <div class="mask d-flex h-100">
+        <div class="container" style="text-align: center;">
+          <div id="shadow" class="table-responsive" data-mdb-perfect-scrollbar="true"
+            style="position: relative; ">
+            {% csrf_token %}
+            {% if problems_list %}
+            <div class="card">
+              <table class="table table-light table-borderless table-hover mb-0 bg-white">
+                <thead class="table-dark sticky-top">
+                  <tr>
+                    <th scope="col" style="width: 50%;">PROBLEM</th>
+                    <th scope="col" style="width: 20%;">DIFFICULTY</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for problem in problems_list %}
+                  <tr>
+                    <td class="text-white"><a href="{% url 'onlineJudge:problem_detail' problem.id %}">{{ problem.Problem_Name }}</a></td>
+                    <td>{{ problem.Problem_Difficulty }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            {% else %}
+            <div class="card bg-white"><h4><b>Sorry,No Problems right now.</b></h4></div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>
