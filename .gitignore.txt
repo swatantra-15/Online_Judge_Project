@@ -1,6 +1,0 @@
-env
-*.cpp
-*.exe
-tempf_out
-.vscode/
-static

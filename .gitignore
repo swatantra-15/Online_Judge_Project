@@ -1,0 +1,7 @@
+.vscode
+env
+*.cpp
+*.exe
+tempf_out
+onlineJudge/test_input
+onlineJudge/test_output
